@@ -2,7 +2,7 @@
 
 Streaming Mongo backup and restore for AWS and GCP
 
-todo: quay badge
+[![Docker Repository on Quay](https://quay.io/repository/utilitywarehouse/streaming-mongo-burs/status "Docker Repository on Quay")](https://quay.io/repository/utilitywarehouse/streaming-mongo-burs)
 
 ## About
 This is a simple tool to backup and restore mongo collections from S3. Data is streamed through a configurable compression algorithm directly to S3 without using ephemeral storage on a node, with the exception of a legacyRestore operation, which will copy data to ephemeral storage for compatibility.
