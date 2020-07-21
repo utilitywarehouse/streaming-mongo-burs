@@ -1,6 +1,6 @@
 # _Streaming_ MongoBURS
 
-Streaming Mongo backup and restore for AWS and GCP
+Streaming Mongo backup and restore for AWS and GCP.
 
 [![Docker Repository on Quay](https://quay.io/repository/utilitywarehouse/streaming-mongo-burs/status "Docker Repository on Quay")](https://quay.io/repository/utilitywarehouse/streaming-mongo-burs)
 
