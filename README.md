@@ -60,7 +60,7 @@ spec:
           restartPolicy: Never
           containers:
             - name: burs
-              image: registry.uw.systems/energy/energy-mongo-burs:v1.0.0
+              image: quay.io/utilitywarehouse/streaming-mongo-burs:v1.0.1
               env:
                 - name: MONGO
                   valueFrom:
@@ -107,7 +107,7 @@ spec:
           restartPolicy: Never
           containers:
             - name: burs
-              image: registry.uw.systems/energy/energy-mongo-burs:v1.0.0
+              image: quay.io/utilitywarehouse/streaming-mongo-burs:v1.0.1
               env:
                 - name: MONGO
                   valueFrom:
