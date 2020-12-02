@@ -20,13 +20,13 @@ Run the container with the following arguments `restore $TIMESTAMP $COLLECTIONS`
 |TIMESTAMP|YYYY-MM-DDTHH-MM-SS (2019-01-01T12:42:04)|the date to restore the database from|
 |COLLECTIONS|Database.Collection,... (test.test,test.test2)|the collections you wish to restore into the database as a CSV string|
 
-
 ### Environment Variables
 
 |ENV|Description|Required|
 |---|-----------|--------|
 |MONGO|a mongo connection string|[x]|
 |BUCKET|the name of the bucket you want to backup the database to|[x]|
+|AWS_CONTAINER_CREDENTIALS_FULL_URI|the container credentials URI (used by [Vault](https://github.com/utilitywarehouse/documentation/blob/master/infra/vault-aws.md#requirements)) (AWS only)|
 |AWS_ACCESS_KEY_ID|the aws key ID|[x] (AWS only)|
 |AWS_SECRET_ACCESS_KEY|the aws secret key|[x] (AWS only)|
 |AWS_REGION|the aws region|[x] (AWS only)|
@@ -36,7 +36,6 @@ Run the container with the following arguments `restore $TIMESTAMP $COLLECTIONS`
 
 ***Note***
 in addition to the `GOOGLE_CREDENTIALS_PATH` env var you will need to mount the credentials file into the container
-
 
 ## Examples
 ### AWS
@@ -130,6 +129,4 @@ spec:
                 items:
                   - key: gcp.creds.json
                     path: service_account.json
-
-
 ```
