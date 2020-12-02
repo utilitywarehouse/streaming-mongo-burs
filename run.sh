@@ -23,14 +23,16 @@ BUCKET_PREFIX="s3"
 
 if [[ -z "${GOOGLE_CREDENTIALS_PATH}" ]];then
 
-    if [[ -z "${AWS_ACCESS_KEY_ID}" ]];then
-        echo "missing required AWS_ACCESS_KEY_ID env var"
-        exit 1
-    fi
+    if [[ -z "${AWS_CONTAINER_CREDENTIALS_FULL_URI}" ]];then
+        if [[ -z "${AWS_ACCESS_KEY_ID}" ]];then
+            echo "missing required AWS_ACCESS_KEY_ID env var"
+            exit 1
+        fi
 
-    if [[ -z "${AWS_SECRET_ACCESS_KEY}" ]];then
-        echo "missing required AWS_SECRET_ACCESS_KEY env var"
-        exit 1
+        if [[ -z "${AWS_SECRET_ACCESS_KEY}" ]];then
+            echo "missing required AWS_SECRET_ACCESS_KEY env var"
+            exit 1
+        fi
     fi
 
     if [[ -z "${AWS_REGION}" ]];then
