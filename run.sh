@@ -23,7 +23,7 @@ BUCKET_PREFIX="s3"
 
 if [[ -z "${GOOGLE_CREDENTIALS_PATH}" ]];then
 
-    if [[ -z "${AWS_CONTAINER_CREDENTIALS_FULL_URI}" ]];then
+    if [[ -z "${AWS_CONTAINER_CREDENTIALS_FULL_URI}" && -z "${AWS_SHARED_CREDENTIALS_FILE}" ]];then
         if [[ -z "${AWS_ACCESS_KEY_ID}" ]];then
             echo "missing required AWS_ACCESS_KEY_ID env var"
             exit 1
