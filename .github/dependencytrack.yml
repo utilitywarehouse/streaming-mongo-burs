@@ -1,0 +1,27 @@
+
+name: DependencyTrack Upload SBOM
+on: push
+jobs:
+  dependencytrack-sbom-upload:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Anchore SBOM Action
+      uses: anchore/sbom-action@v0.15.10
+      with:
+        image: grafana/grafana-oss:10.4.1
+        artifact-name: sbom.cdx.json
+        output-file: ./sbom.cdx.json
+        format: cyclonedx-json
+    - name: Upload SBOMs
+      working-directory: "."
+      run: |
+            echo "::add-mask::${{ secrets.DEPENDENCYTRACK_API_KEY }}"
+            curl -sS -X "POST" "https://${{ secrets.DEPENDENCYTRACK_HOSTNAME }}/api/v1/bom" \
+                -H "Content-Type: multipart/form-data" \
+                -H "X-Api-Key: ${{ secrets.DEPENDENCYTRACK_API_KEY }}" \
+                -F "autoCreate=true" \
+                -F "projectName=${{ github.repository }}" \
+                -F "projectVersion=master" \
+                -F "bom=@sbom.cdx.json"
