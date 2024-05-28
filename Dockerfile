@@ -1,4 +1,4 @@
-FROM mongo:4
+FROM mongo:7
 
 RUN apt-get update && apt-get -y install awscli lsb-release curl xz-utils zstd
 
